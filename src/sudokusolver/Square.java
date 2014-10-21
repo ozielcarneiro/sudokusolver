@@ -78,11 +78,15 @@ public class Square {
      * @param value the value to set
      */
     public void setValue(int value) {
-        this.value = value;
-        for (int i = 0; i < getPossible().length; i++) {
-            getPossible()[i] = false;
+        if(value>0&&value<=9){
+            this.value = value;
+            for (int i = 0; i < getPossible().length; i++) {
+                getPossible()[i] = false;
+            }
+            possibleCount = 0;
+        }else{
+            this.value = 0;
         }
-        possibleCount = 0;
     }
 
     /**

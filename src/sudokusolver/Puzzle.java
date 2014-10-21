@@ -25,8 +25,8 @@ public class Puzzle {
             }
         }
     }
-    
-    public int getPos(int i, int j){
+
+    public int getPos(int i, int j) {
         return getBoard()[i][j].getValue();
     }
 
@@ -176,6 +176,63 @@ public class Puzzle {
             }
         }
         return merged;
+    }
+
+    public boolean isSolved() {
+        boolean solved = true;
+        //checks each row
+        for (Square[] board1 : board) {
+            boolean[] check = {false, false, false, false, false, false, false, false, false};
+            for (Square board11 : board1) {
+                if (board11.getValue() == 0) {
+                    return false;
+                } else if (check[board11.getValue()-1]) {
+                    return false;
+                } else {
+                    check[board11.getValue()-1] = true;
+                }
+            }
+            for (int i = 0; i < check.length; i++) {
+                solved = solved && check[i];
+            }
+        }
+        //checks each column
+        for (int i = 0; i < board[1].length; i++) {
+            boolean[] check = {false, false, false, false, false, false, false, false, false};
+            for (Square[] board1 : board) {
+                if (board1[i].getValue() == 0) {
+                    return false;
+                } else if (check[board1[i].getValue()-1]) {
+                    return false;
+                } else {
+                    check[board1[i].getValue()-1] = true;
+                }
+            }
+            for (int j = 0; j < check.length; j++) {
+                solved = solved && check[j];
+            }
+        }
+        //checks each quadrant
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                boolean[] check = {false, false, false, false, false, false, false, false, false};
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        if (board[(i * 3) + k][(j * 3) + l].getValue() == 0) {
+                            return false;
+                        } else if (check[board[(i * 3) + k][(j * 3) + l].getValue()-1]) {
+                            return false;
+                        } else {
+                            check[board[(i * 3) + k][(j * 3) + l].getValue()-1] = true;
+                        }
+                    }
+                }
+                for (int k = 0; k < check.length; k++) {
+                    solved = solved && check[k];
+                }
+            }
+        }
+        return solved;
     }
 
     /**

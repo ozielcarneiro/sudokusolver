@@ -2913,14 +2913,14 @@ public class SudokuSolver extends javax.swing.JFrame {
                             .add(jPanel36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
         );
 
-        jButton1.setText("Resolver");
+        jButton1.setText("Solve");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        limparButton.setText("Limpar");
+        limparButton.setText("Clear");
         limparButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparButtonActionPerformed(evt);
@@ -2932,16 +2932,15 @@ public class SudokuSolver extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(57, 57, 57)
-                        .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(89, 89, 89)
-                        .add(jButton1)
-                        .add(121, 121, 121)
-                        .add(limparButton)))
+                .add(57, 57, 57)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(106, 106, 106)
+                .add(jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(limparButton)
+                .add(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -4878,10 +4877,10 @@ public class SudokuSolver extends javax.swing.JFrame {
                 puz.updatePos(i, j, Integer.parseInt(casas[i][j].getText()));
             }
         }
-        puz.printBoard();
+        //puz.printBoard();
         Solver solv = new Solver();
         solv.solve(puz);
-        puz.printBoard();
+        //puz.printBoard();
         for (int i = 0; i < casas.length; i++) {
             for (int j = 0; j < casas[i].length; j++) {
                 casas[i][j].setText(String.valueOf(puz.getPos(i, j)));

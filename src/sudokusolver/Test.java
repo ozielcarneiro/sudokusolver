@@ -48,10 +48,11 @@ public class Test {
         p.updatePos(8, 3, 4);
         p.updatePos(8, 7, 2);
         p.printBoard();
-        
+        System.out.println(p.isSolved());
         Solver s = new Solver();
         s.solve(p);
         p.printBoard();
+        System.out.println(p.isSolved());
     }
     
 }

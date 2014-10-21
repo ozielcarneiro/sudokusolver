@@ -4,13 +4,16 @@
  */
 package sudokusolver;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ozielcarneiro
  */
 public class Solver {
     
-    public void solve(Puzzle puzz){
+    public boolean solve(Puzzle puzz){
         int i = 0;
         while(!puzz.getQueue().isEmpty()){
             puzz.setQueue(puzz.sortQueue(puzz.getQueue()));
@@ -25,12 +28,16 @@ public class Solver {
                 puzz.updatePos(x, y, value);
             }else if(puzz.getQueue().get(0).getPossibleCount()>1){
                 //
+                JOptionPane.showMessageDialog(null, "The current solver is not equiped to solve this puzzle, or"
+                        + " information inserted is incomplete or inaccurate.");
+                return false;
             }
             if(i>100){
                 break;
             }
             i++;
         }
+        return puzz.isSolved();
     }
     
 }
