@@ -25,6 +25,17 @@ public class Puzzle {
             }
         }
     }
+    
+    public Puzzle(Puzzle puzz){
+        this.board = new Square[9][9];
+        queue = new ArrayList<Square>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                this.board[i][j] = new Square(puzz.getBoard()[i][j]);
+                this.queue.add(this.board[i][j]);
+            }
+        }
+    }
 
     public int getPos(int i, int j) {
         return getBoard()[i][j].getValue();
@@ -128,9 +139,12 @@ public class Puzzle {
     }
 
     public void removeZeros() {
-        for (int i = 0; i < getQueue().size(); i++) {
+        int i = 0;
+        while(i<queue.size()){
             if (getQueue().get(i).getPossibleCount() == 0) {
                 getQueue().remove(i);
+            }else{
+                i++;
             }
         }
     }

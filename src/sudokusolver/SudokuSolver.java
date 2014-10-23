@@ -4878,8 +4878,8 @@ public class SudokuSolver extends javax.swing.JFrame {
             }
         }
         //puz.printBoard();
-        Solver solv = new Solver();
-        solv.solve(puz);
+        
+        Solver.solve(puz);
         //puz.printBoard();
         for (int i = 0; i < casas.length; i++) {
             for (int j = 0; j < casas[i].length; j++) {

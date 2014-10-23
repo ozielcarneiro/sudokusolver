@@ -55,6 +55,15 @@ public class Square {
         possibleCount = 9;
     }
     
+    public Square(Square sq){
+        this.value = sq.value;
+        this.column = sq.column;
+        this.row = sq.row;
+        this.quadrant = sq.quadrant;
+        this.possibleCount = sq.possibleCount;
+        this.possible = sq.possible.clone();
+    }
+    
     public int getPossibleValue(){
         int possibleValue = 0;
         for (int i = 0; i < possible.length; i++) {
